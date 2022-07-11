@@ -1,11 +1,9 @@
 import React from "react";
-import { SafeAreaView, Text, View } from "react-native";
-import { NavigationContainer, StackActions } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { SafeAreaView, StatusBar, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+
 import RedditList from "./src/components/RedditList";
 import Home from "./src/components/Home";
-
-const Stack = createNativeStackNavigator();
 
 function HomeScreen() {
   return (
@@ -18,12 +16,13 @@ function HomeScreen() {
 const App = () => {
   return (
     <>
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
         {/* <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={HomeScreen} />
           </Stack.Navigator>
         </NavigationContainer> */}
+        <StatusBar backgroundColor="black" barStyle="light-content" />
         <NavigationContainer>
           <Home />
         </NavigationContainer>

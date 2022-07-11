@@ -27,7 +27,7 @@ const Reddit = ({ data }) => {
           paddingLeft: 135,
           height: 190,
           overflow: "hidden",
-          borderRadius: 6,
+          borderRadius: 3,
           borderWidth: 1,
           flexDirection: "row",
         }}
@@ -55,7 +55,7 @@ const Reddit = ({ data }) => {
           }}
         >
           <View>
-            <Text style={{ marginBottom: 4, textAlign: "right" }}>{created}</Text>
+            <Text style={{ color: "#424242", marginBottom: 4, textAlign: "right" }}>{created}</Text>
             <Text
               style={{
                 color: "black",
