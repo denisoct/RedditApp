@@ -1,21 +1,19 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import IconMI from "react-native-vector-icons/MaterialIcons";
 import IconE from "react-native-vector-icons/Entypo";
 import IconF from "react-native-vector-icons/Feather";
 
-import RedditList from "./RedditList";
+import RedditList from "../components/RedditList";
 import New from "./New";
 import Top from "./Top";
 import Controversial from "./Controversial";
 import Hot from "./Hot";
 
-const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const Home = ({ navigator }) => {
+const Home = () => {
   return (
     <>
       <Tab.Navigator
@@ -34,7 +32,7 @@ const Home = ({ navigator }) => {
       >
         <Tab.Screen
           name="New"
-          component={New}
+          children={(props) => <New {...props} />}
           options={{
             tabBarIcon: ({ focused }) => (
               <IconE name="new" size={25} color={`${focused ? "#3949AB" : "white"}`} />

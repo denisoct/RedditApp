@@ -1,9 +1,9 @@
 import React from "react";
-import { Dimensions, FlatList, ScrollView, Text, View } from "react-native";
+import { Button, Dimensions, FlatList, ScrollView, Text, View } from "react-native";
 
 import Reddit from "./Reddit";
 
-const RedditList = ({ name, reddits }) => {
+const RedditList = ({ name, reddits, navigation }) => {
   return (
     <>
       <View style={{ flex: 1 }}>
@@ -11,7 +11,6 @@ const RedditList = ({ name, reddits }) => {
           style={{
             textAlign: "center",
             fontSize: 24,
-            marginBottom: 4,
             backgroundColor: "black",
             paddingVertical: 2,
             color: "white",
@@ -28,10 +27,11 @@ const RedditList = ({ name, reddits }) => {
             ))}
           </View>
         </ScrollView> */}
+        {/* <Button title="Go to" onPress={() => navigation.navigate("Test")} /> */}
         <FlatList
-          data={reddits.data.children}
-          contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 70 }}
-          renderItem={({ item }) => <Reddit data={item.data} />}
+          data={reddits.data?.children}
+          contentContainerStyle={{ paddingBottom: 70 }}
+          renderItem={({ item }) => <Reddit data={item.data} navigation={navigation} />}
         />
       </View>
     </>
