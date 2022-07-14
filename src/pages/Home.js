@@ -32,7 +32,7 @@ const Home = () => {
       >
         <Tab.Screen
           name="New"
-          children={(props) => <New {...props} />}
+          component={New}
           options={{
             tabBarIcon: ({ focused }) => (
               <IconE name="new" size={25} color={`${focused ? "#3949AB" : "white"}`} />
@@ -55,13 +55,13 @@ const Home = () => {
           component={Top}
           options={{
             tabBarIcon: ({ focused }) => (
-              <IconMI name="star-rate" size={25} color={`${focused ? "#C2185B" : "white"}`} />
+              <IconMI name="star-rate" size={25} color={`${focused ? "#CCCC00" : "white"}`} />
             ),
             tabBarLabel: ({ focused }) => (
               <Text
                 style={{
                   fontSize: focused ? 12 : 10,
-                  color: focused ? "#C2185B" : "white",
+                  color: focused ? "#CCCC00" : "white",
                   fontWeight: focused ? "bold" : "normal",
                 }}
               >

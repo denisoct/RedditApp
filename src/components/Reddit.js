@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   Dimensions,
@@ -14,7 +15,8 @@ import nsfwImg from "../assets/nsfw.jpg";
 
 // Each post must show the following data: thumbnail image (if present), title, author, total number of votes (score), number of comments and date of creation
 
-const Reddit = ({ data, navigation }) => {
+const Reddit = ({ data }) => {
+  const navigate = useNavigation();
   const {
     thumbnail,
     thumbnail_width,
@@ -31,19 +33,15 @@ const Reddit = ({ data, navigation }) => {
     <>
       <TouchableNativeFeedback
         onPress={() => {
-          navigation.navigate({ name: "Test", params: { permalink: permalink } });
+          navigate.navigate({ name: "WebViewReddit", params: { permalink: permalink } });
         }}
         delayPressIn={1000}
       >
         <View
           style={{
-            marginBottom: 10,
             paddingLeft: 135,
             height: 170,
             overflow: "hidden",
-            borderBottomWidth: 0.7,
-            borderTopWidth: 0.7,
-            borderColor: "rgba(0, 0, 0, 0.5)",
             flexDirection: "row",
           }}
         >

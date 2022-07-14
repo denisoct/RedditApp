@@ -1,9 +1,32 @@
-import React from "react";
-import { Button, Dimensions, FlatList, ScrollView, Text, View } from "react-native";
+import React, { useEffect } from "react";
+import {
+  ActivityIndicator,
+  Button,
+  FlatList,
+  RefreshControl,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
+import { useData } from "../hooks/useData";
 
 import Reddit from "./Reddit";
 
-const RedditList = ({ name, reddits, navigation }) => {
+const RedditList = ({ name }) => {
+  const { refreshing, data: reddits, getData } = useData(name);
+
+  const ItemSeparatorView = () => {
+    return (
+      <View
+        style={{
+          height: 1.5,
+          width: "100%",
+          backgroundColor: "#808080",
+        }}
+      />
+    );
+  };
+
   return (
     <>
       <View style={{ flex: 1 }}>
@@ -27,11 +50,16 @@ const RedditList = ({ name, reddits, navigation }) => {
             ))}
           </View>
         </ScrollView> */}
-        {/* <Button title="Go to" onPress={() => navigation.navigate("Test")} /> */}
+
+        {refreshing ? <ActivityIndicator size="small" color="#0000ff" /> : null}
         <FlatList
           data={reddits.data?.children}
           contentContainerStyle={{ paddingBottom: 70 }}
-          renderItem={({ item }) => <Reddit data={item.data} navigation={navigation} />}
+          renderItem={({ item }) => <Reddit data={item.data} />}
+          ItemSeparatorComponent={ItemSeparatorView}
+          enableEmptySections={true}
+          showsVerticalScrollIndicator={true}
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={getData} />}
         />
       </View>
     </>
