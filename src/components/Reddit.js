@@ -1,13 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import {
-  Dimensions,
-  Image,
-  Text,
-  TouchableNativeFeedback,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, Text, TouchableNativeFeedback, View } from "react-native";
 
 import nsfwImg from "../assets/nsfw.jpg";
 
@@ -17,17 +10,8 @@ import nsfwImg from "../assets/nsfw.jpg";
 
 const Reddit = ({ data }) => {
   const navigate = useNavigation();
-  const {
-    thumbnail,
-    thumbnail_width,
-    thumbnail_height,
-    title,
-    author,
-    score,
-    num_comments,
-    created,
-    permalink,
-  } = data;
+  const { thumbnail, thumbnail_width, title, author, score, num_comments, created, permalink } =
+    data;
 
   return (
     <>

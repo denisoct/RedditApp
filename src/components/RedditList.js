@@ -1,13 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  ActivityIndicator,
-  Button,
-  FlatList,
-  RefreshControl,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
+import React from "react";
+import { ActivityIndicator, FlatList, RefreshControl, Text, View } from "react-native";
 import { useData } from "../hooks/useData";
 
 import Reddit from "./Reddit";
@@ -51,15 +43,14 @@ const RedditList = ({ name }) => {
           </View>
         </ScrollView> */}
 
-        {refreshing ? <ActivityIndicator size="small" color="#0000ff" /> : null}
+        {refreshing && <ActivityIndicator size="large" color="#0000FF" />}
         <FlatList
           data={reddits.data?.children}
           contentContainerStyle={{ paddingBottom: 70 }}
           renderItem={({ item }) => <Reddit data={item.data} />}
           ItemSeparatorComponent={ItemSeparatorView}
-          enableEmptySections={true}
-          showsVerticalScrollIndicator={true}
           refreshControl={<RefreshControl refreshing={refreshing} onRefresh={getData} />}
+          initialNumToRender={4}
         />
       </View>
     </>

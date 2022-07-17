@@ -3,7 +3,6 @@ import { SafeAreaView, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import RedditList from "./src/components/RedditList";
 import Home from "./src/pages/Home";
 import WebViewReddit from "./src/components/WebViewReddit";
 
@@ -17,9 +16,7 @@ const App = () => {
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="WebViewReddit">
-              {(props) => <WebViewReddit {...props} />}
-            </Stack.Screen>
+            <Stack.Screen name="WebViewReddit" component={WebViewReddit} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
